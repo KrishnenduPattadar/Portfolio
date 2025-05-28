@@ -1,0 +1,71 @@
+{% load static %}
+{% load django_browser_reload %}
+{% django_browser_reload_script %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    
+      <!-- ✅ Tailwind CSS (correct CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+ <!-- Custom Styles -->
+    <link rel="stylesheet" href="{% static 'PortFolioApp/css/styles.css' %}">
+
+    <!-- Devicons (Technology logos) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <!-- Animate.css -->
+<body class="bg-gray-100 text-gray-900">
+    <!-- Gradient Banner -->
+    <div class="gradient-banner text-center py-10">
+        <h1 class="text-4xl font-bold">Welcome to My Portfolio</h1>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="flex justify-center mt-10 items-center">
+        <div class="profile-frame">
+            <img src="{% static 'PortFolioApp/images/1744646438490.jpg' %}" alt="Profile" class="profile-img rounded-full shadow-lg">
+        </div>
+        
+        <div class="tagcloud"></div>
+
+        
+        <div class="ml-5">
+            <h2 class="text-2xl font-semibold">
+                I'm <span class="text-indigo-500">Krishnendu Pattadar</span>
+                <h3 class="text-2xl font-bold mb-2">
+      <span id="line1"></span><span class="cursor">|</span>
+    </h3>
+    <h3 class="text-xl mb-2">
+      <span id="line2"></span><span class="cursor">|</span>
+    </h3>
+            </h2>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg mt-4">
+                <h3 class="text-3xl font-semibold text-white">
+                    <span id="typed-text"></span><span id="cursor" class="text-indigo-500 font-bold"></span>
+                    <script src="{% static 'js/typing.js' %}"></script>
+
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technologies Section -->
+    <div class="text-center mt-10">
+        <h2 class="text-2xl font-semibold mb-4">Technologies I Use</h2>
+        <div class="flex justify-center space-x-5 text-5xl text-indigo-500">
+            <i class="devicon-github-original"></i>
+            <i class="devicon-django-plain"></i>
+            <i class="devicon-python-plain"></i>
+            <i class="devicon-html5-plain"></i>
+            <i class="devicon-bootstrap-plain"></i>
+            <i class="devicon-tailwindcss-plain"></i>
+            <i class="devicon-css3-plain"></i>
+            <i class="devicon-javascript-plain"></i>
+        </div>
+    </div>
+</body>
+</html>
