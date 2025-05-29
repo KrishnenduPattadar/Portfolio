@@ -1,6 +1,10 @@
 from django.shortcuts import render
-
 def home(request):
-    return render(request, 'PortFolioApp/base.html')  # Or change to home.html later
-def InquiryView(request):
-    return render(request, 'PortFolioApp/inquiry.html')  # Or change to inquiry.html later
+    icons = [
+        "git","github", "django", "python", "html5", "bootstrap", "tailwindcss",
+        "css3", "javascript", "postgresql", "git", "sqlite"
+    ]
+    return render(request, "PortFolioApp/base.html", {"icons": icons})
+def about(request):
+    email = "nurulhuda@gmail.com"
+    return render(request, "PortFolioApp/base.html", {"email": email})

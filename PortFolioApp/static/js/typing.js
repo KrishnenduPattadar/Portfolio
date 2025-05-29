@@ -1,6 +1,7 @@
+// import FloatingCard from "@/components/ui/snappy-floating-card";
 // Lines to be typed
 const lines = [
-    "Hello, I'm Krishnendu, a Backend Developer 🧑‍💻",
+    "a Backend Developer 🧑‍💻.....",
 ];
 
 // Variables to track the current line and character
@@ -27,3 +28,4 @@ function typeLine() {
 
 // Initialize typing effect on window load
 window.onload = typeLine;
+
