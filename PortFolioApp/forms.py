@@ -18,6 +18,16 @@ class InquiryForm(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
+
+    # Normalize to lowercase
+        email = email.lower()
+
+    # 1. Check email domain
+        if not email.endswith('@gmail.com'):
+            raise forms.ValidationError("Email must end with '@gmail.com'.")
+
+    # 2. Check if already submitted
         if Inquiry.objects.filter(email=email).exists():
             raise forms.ValidationError("This email has already submitted a message.")
+
         return email

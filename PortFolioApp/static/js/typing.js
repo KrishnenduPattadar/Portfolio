@@ -26,6 +26,9 @@ function typeLine() {
     }
 }
 
+
 // Initialize typing effect on window load
 window.onload = typeLine;
+
+
 

@@ -1,4 +1,5 @@
 /* @import "tailwindcss"; */
+
 :root {
   --lime: rgb(98, 223, 206);
   --moss-green: rgb(30, 236, 175);
@@ -106,5 +107,7 @@ h1 {
 .animate-fade-in-slow {
   animation: fadeIn 1.5s ease-out forwards;
 }
+
+
 
 
