@@ -1,5 +1,6 @@
 from django import forms
 from .models import Inquiry
+
 class InquiryForm(forms.ModelForm):
     class Meta:
         model = Inquiry
@@ -14,3 +15,9 @@ class InquiryForm(forms.ModelForm):
             'email': 'Your Email',
             'message': 'Your Message',
         }
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if Inquiry.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email has already submitted a message.")
+        return email
