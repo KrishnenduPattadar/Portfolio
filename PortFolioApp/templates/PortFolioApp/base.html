@@ -5,6 +5,8 @@
 <html lang="en">
 <head>
   <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+  <!-- Typing script -->
+  <script src="{% static 'js/typing.js' %}"></script>
   
   <!-- Header -->
 <!-- Include this in the <head> if not already -->
@@ -143,7 +145,8 @@
 
     <div class="animated-gradient p-4 md:p-4 shadow-md rounded-lg mt-4 text-white rounded-xl">
       <p class="text-sm md:text-base">
-      I am a passionate backend developer with a strong focus on building robust and scalable web applications. My core expertise lies in Python, Django, SQL, and PostgreSQL. I’m always eager to take on new challenges and continuously grow as a developer. Currently, I’m working at Colan Infotech Private Limited in Chennai as a Python Developer.      </p>
+      I'm a passionate backend developer with expertise in Python, Django, SQL, and PostgreSQL. I build robust, scalable web applications and use tools like Git, GitHub, and AI to boost productivity and work smarter. I believe knowing how to control AI effectively is a skill—and I enjoy pushing my limits with every project. 😎
+Currently, I’m working at Colan Infotech Private Limited in Chennai as a Python Developer.</p>
       <p class="text-sm md:text-base mt-2">
         {% comment %} Let's build something amazing together. {% endcomment %}
       </p>
@@ -224,7 +227,7 @@
     { delay: 1500, html: `<div class="text-gray-300">✔ E-commerce Website — features include product listings, cart, checkout, and admin panel.</div>` },
     { delay: 2000, html: `<div class="text-yellow-400">✔ Online Examination System — secure platform for conducting and evaluating tests.</div>` },
     { delay: 1500, html: `<div class="text-gray-300">✔ Portfolio — you're viewing this project right now!</div>` },
-    { delay: 1500, html: `<div class="text-gray-300">✔ For more projects, visit my GitHub or connect on LinkedIn..</div>` },
+    { delay: 1500, html: `<div class="text-gray-300">👀 For more projects, visit my GitHub or connect on LinkedIn..</div>` },
   ];
 
   let i1 = 0;
@@ -256,9 +259,9 @@
   { delay: 1000, html: `<div class="text-blue-400">✔ Bachelor of Computer Applications (BCA) – Pursued from 2017 to 2020</div>` },
   { delay: 1500, html: `<div class="text-gray-300">✔ Master of Computer Applications (MCA) – Pursued from 2021 to 2023</div>` },
   { delay: 1500, html: `<div class="text-white">(env) E:/Krishnendu/Skills/dir></div>` },
-  { delay: 1500, html: `<div class="text-gray-300">✔ Technical Skills: Proficient in Python, Django, SQL, and PostgreSQL. Experienced with front-end technologies including HTML, CSS, Tailwind CSS, and JavaScript.</div>` },
+  { delay: 1500, html: `<div class="text-gray-300">✔ Technical Skills: Proficient in Python, Django, SQL, and PostgreSQL , Git, GitHub. Experienced with front-end technologies including HTML, CSS, Tailwind CSS, and JavaScript.</div>` },
   { delay: 1500, html: `<div class="text-gray-300">✔ Passionate about backend development and building scalable web applications</div>` },
-  { delay: 1500, html: `<div class="text-gray-300">✔ For more details, feel free to connect with me on LinkedIn or GitHub</div>` },
+  { delay: 1500, html: `<div class="text-gray-300">👀 For more details, feel free to connect with me on LinkedIn or GitHub</div>` },
 ];
 
   
@@ -388,8 +391,8 @@
 
 
   <!-- Gradient overlays (optional) -->
-  <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
-  <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black/90 via-black/50 to-transparent"></div>
+  {% comment %} <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
+  <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black/90 via-black/50 to-transparent"></div> {% endcomment %}
 </div>
 
 
@@ -425,9 +428,6 @@
       <img src="https://cdn.simpleicons.org/{{ icon }}/4f46e5" class="absolute w-8 h-8 transition-transform duration-300 hover:scale-125" alt="{{ icon }}" />
     {% endfor %}
   </div> {% endcomment %}
-
-  <!-- Typing script -->
-  <script src="{% static 'js/typing.js' %}"></script>
 
   {% comment %} <!-- Icon cloud animation script -->
   <script>
@@ -466,9 +466,6 @@
     </span>
   </h2>
 
-  <footer class="text-center mt-10 p-4 bg-gray-200 rounded-lg shadow-md">
-    <p class="text-sm text-gray-600">👤 2025 Krishnendu Pattadar. All rights reserved.</p>
-  </footer>
 </body>
 
 </html>
