@@ -287,80 +287,171 @@ Currently, I’m working at Colan Infotech Private Limited in Chennai as a Pytho
 </script>
 
 
-<!-- Contact Card Container -->
-<div class="max-w-md ml-10 mt-10 animate-slide-up">
-  
-  <!-- Flash Messages (above card) -->
-  {% if messages %}
-    {% for message in messages %}
-      <div class="ml-[115px] mt-10 mb-4 p-3 rounded text-sm font-medium {% if message.tags == 'success' %}bg-green-200 text-green-800{% else %}bg-red-200 text-red-800{% endif %}">
-        {{ message }}
-      </div>
-    {% endfor %}
-  {% endif %}
+{% load static %}
 
-  <!-- Contact Form Title -->
-  <h2 class="text-2xl font-bold mb-4 ml-6 md:ml-14 lg:ml-28">Suggestions and Feedback</h2>
 
-  <!-- Contact Form Card -->
-  <div class="bg-white shadow-lg rounded-xl p-4 ml-6 md:ml-14 lg:ml-28">
-    <form method="post" class="space-y-5">
-      {% csrf_token %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'PortFolioApp/css/styles.css' %}">
+  <script src="{% static 'js/typing.js' %}" defer></script>
+</head>
 
-      <!-- Global Form Errors (if any) -->
-      {% if form.non_field_errors %}
-        <div class="text-red-600 text-sm mb-2">{{ form.non_field_errors }}</div>
-      {% endif %}
+<body class="bg-gray-100 p-6">
 
-      <!-- Name Field -->
-      <div>
-        <input type="text" name="name" value="{{ form.name.value|default:'' }}" placeholder="Your Name"
-          class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        {% if form.name.errors %}
-          <p class="text-red-600 text-sm mt-1">{{ form.name.errors.0 }}</p>
+<!-- Container for Both Cards -->
+<div class="mt-16 flex flex-col lg:flex-row lg:justify-center gap-10">
+
+
+  <!-- Contact Card -->
+  <div class="max-w-md w-full animate-slide-up">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="mt-10 mb-4 p-3 rounded text-sm font-medium {% if message.tags == 'success' %}bg-green-200 text-green-800{% else %}bg-red-200 text-red-800{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <h2 class="text-2xl font-bold mb-4 ml-6 md:ml-14 lg:ml-5">Suggestions and Feedback</h2>
+
+    <div class="bg-white shadow-lg rounded-xl p-4 ml-6 md:ml-14 lg:ml-5">
+      <form method="post" class="space-y-5">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+          <div class="text-red-600 text-sm mb-2">{{ form.non_field_errors }}</div>
         {% endif %}
-      </div>
 
-      <!-- Email Field -->
-      <div>
-        <input type="email" name="email" value="{{ form.email.value|default:'' }}" placeholder="Your Email"
-          class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        {% if form.email.errors %}
-          <p class="text-red-600 text-sm mt-1">{{ form.email.errors.0 }}</p>
-        {% endif %}
-      </div>
+        <div>
+          <input type="text" name="name" value="{{ form.name.value|default:'' }}" placeholder="Your Name"
+            class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          {% if form.name.errors %}
+            <p class="text-red-600 text-sm mt-1">{{ form.name.errors.0 }}</p>
+          {% endif %}
+        </div>
 
-      <!-- Message Field -->
-      <div>
-        <textarea name="message" rows="4" placeholder="Your Message"
-          class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">{{ form.message.value|default:'' }}</textarea>
-        {% if form.message.errors %}
-          <p class="text-red-600 text-sm mt-1">{{ form.message.errors.0 }}</p>
-        {% endif %}
-      </div>
+        <div>
+          <input type="email" name="email" value="{{ form.email.value|default:'' }}" placeholder="Your Email"
+            class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          {% if form.email.errors %}
+            <p class="text-red-600 text-sm mt-1">{{ form.email.errors.0 }}</p>
+          {% endif %}
+        </div>
 
-      <!-- Submit Button -->
-      <button type="submit"
-        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
-        Send
-      </button>
-    </form>
+        <div>
+          <textarea name="message" rows="4" placeholder="Your Message"
+            class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">{{ form.message.value|default:'' }}</textarea>
+          {% if form.message.errors %}
+            <p class="text-red-600 text-sm mt-1">{{ form.message.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <button type="submit"
+          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+          Send
+        </button>
+      </form>
+    </div>
   </div>
+
+
+{% comment %} <script>
+  document.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent full page refresh
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch(form.action || "", {
+      method: "POST",
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+      body: formData,
+    })
+    .then(response => response.text())
+    .then(html => {
+      // Optionally replace just the form or flash message part
+      document.querySelector("form").reset();
+      alert("Thank you! Your suggestion was submitted.");
+    })
+    .catch(err => console.error("Submission failed", err));
+  });
+</script> {% endcomment %}
+
+
+
+  <!-- Hobby Card -->
+  <div class="max-w-md animate-slide-up mt-10">
+    <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+      <!-- Slideshow -->
+      <div class="h-60 w-full overflow-hidden">
+        <img id="slideshow" class="w-full h-full object-cover transition duration-1000 ease-in-out"
+          src="{% static 'PortFolioApp/images/game.jpg' %}" alt="Hobby slideshow" />
+      </div>
+
+      <!-- Hobby Text -->
+      <div class="p-6">
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold mb-2">My Hobbies</div>
+        <p class="text-gray-700 text-sm">
+          I enjoy exploring creative and relaxing hobbies like badminton, photography, hiking, painting, and cooking. These activities keep me inspired and help me express myself in different ways.
+        </p>
+      </div>
+    </div>
+  </div>
+
 </div>
 
+<!-- Slideshow Script -->
+<script>
+  const images = [
+    "{% static 'PortFolioApp/images/game.jpg' %}",
+    "{% static 'PortFolioApp/images/food.jpg' %}",
+    "{% static 'PortFolioApp/images/about.jpg' %}",
+    "{% static 'PortFolioApp/images/about1.jpg' %}",
+    "{% static 'PortFolioApp/images/about2.jpg' %}"
+  ];
+
+  let index = 0;
+  const slideshow = document.getElementById("slideshow");
+
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    slideshow.classList.add("opacity-0");
+    setTimeout(() => {
+      slideshow.src = images[index];
+      slideshow.classList.remove("opacity-0");
+    }, 500);
+  }, 3000);
+</script>
 
 <style>
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
+  #slideshow {
+    transition: opacity 0.5s ease-in-out;
+  }
 </style>
 
+
+
+
+
 {% load static %}
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+</style>
 
 <div class="animated-gradient p-8 md:p-12 rounded-xl shadow-xl mt-8 text-white text-center relative overflow-hidden">
   <h2 class="text-2xl font-bold mb-6">What People Say</h2>
@@ -368,31 +459,28 @@ Currently, I’m working at Colan Infotech Private Limited in Chennai as a Pytho
   <div class="relative w-full overflow-hidden">
     <div class="flex animate-marquee space-x-6">
       {% for review in reviews %}
-        <div class="min-w-[250px] bg-white text-black rounded-xl p-4 shadow-md">
+        <div class="min-w-[250px] max-w-[250px] bg-white text-black rounded-xl p-4 shadow-md flex flex-col">
+          <!-- Profile Info -->
           <div class="flex items-center space-x-3 mb-2">
             <div class="w-10 h-10 rounded-full overflow-hidden">
               <img src="{% static 'PortFolioApp/images/' %}{{ review.photo }}" alt="{{ review.name }}'s Profile" class="w-full h-full object-cover" />
             </div>
-
             <div class="text-left">
               <h4 class="font-bold text-sm">{{ review.name }}</h4>
               <p class="text-xs text-gray-600">{{ review.username }}</p>
             </div>
           </div>
-          <p class="text-sm text-left">{{ review.body }}</p>
+
+          <!-- Review Message (expands with content) -->
+          <p class="text-sm text-left break-words">{{ review.body }}</p>
         </div>
       {% endfor %}
     </div>
   </div>
 
+  <!-- Fade effect on edges -->
   <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
   <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black/90 via-black/50 to-transparent"></div>
-</div>
-
-
-  <!-- Gradient overlays (optional) -->
-  {% comment %} <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
-  <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black/90 via-black/50 to-transparent"></div> {% endcomment %}
 </div>
 
 
