@@ -22,12 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-j^as!v$tf(5dzgucq(ekza8h9&s_ibfljzn)ks5g+ax90=5=&b'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# security/hosts
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
-
-
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "krishnendupattadar.pythonanywhere.com",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://krishnendupattadar.pythonanywhere.com",
+]
 
 # Application definition
 
@@ -39,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'PortFolioApp',  # Your custom app
-    'django_browser_reload',
-    'tailwind',  # Tailwind CSS support
+    # 'django_browser_reload',
+    # 'tailwind',  # Tailwind CSS support
 ]
 
 MIDDLEWARE = [
@@ -51,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_browser_reload.middleware.BrowserReloadMiddleware',
+    # 'django_browser_reload.middleware.BrowserReloadMiddleware',
 ]
 
 ROOT_URLCONF = 'PortFolio.urls'
@@ -76,11 +81,11 @@ WSGI_APPLICATION = 'PortFolio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+# sqlite (free plan)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -119,9 +124,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'PortFolioApp/static']
-
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [BASE_DIR / 'PortFolioApp/static']
+# static files for collectstatic
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
